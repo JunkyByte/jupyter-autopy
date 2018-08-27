@@ -68,6 +68,21 @@ define([
 
     var copy_cells = function(){
       console.log('pressed');
+      var person = {
+        name: "9798679",
+        address: "gagg",
+        phone: "bbbbbbbbbbbb"
+      }
+
+      $.ajax({
+          type: "post",
+          url: "/autopy",
+          contentType: 'application/json',
+          data: JSON.stringify(person),
+          success: function (data) {
+             alert("Success!");
+          }
+      });
     }
 
     var copy_button = function () {
