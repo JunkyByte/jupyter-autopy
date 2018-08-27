@@ -67,20 +67,22 @@ define([
     }
 
     var copy_cells = function(){
-      console.log('pressed');
-      var person = {
-        name: "9798679",
-        address: "gagg",
-        phone: "bbbbbbbbbbbb"
+      var cells = Jupyter.notebook.get_cells();
+      var name = Jupyter.notebook.base_url + Jupyter.notebook.notebook_path;
+      var data = [name];
+      for (var i=0; i < cells.length; i++){
+        if (cells[i].metadata.autopy != null && cells[i].metadata.autopy == true){
+          data.push(cells[i].get_text());
+        }
       }
 
       $.ajax({
           type: "post",
           url: "/autopy",
           contentType: 'application/json',
-          data: JSON.stringify(person),
-          success: function (data) {
-             alert("Success!");
+          data: JSON.stringify(data),
+          success: function (response) {
+             console.log('Reponse from autopy server: ' + response);
           }
       });
     }
