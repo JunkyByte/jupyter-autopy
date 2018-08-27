@@ -1,0 +1,14 @@
+Type: Jupyter Notebook Extension
+Compatibility: 4.x, 5.x
+Name: autopy
+Main: autopy.js
+#Icon: icon.png
+Link: README.md
+Description: FillMe
+Parameters:
+- name: autopy.highlightedColor
+  description: Color for cells that will be copied to the .py file
+  input_type: color
+- name: autopy.highlightedColorMain
+  description: Color for the cells that will be copied as a main
+  input_type: color
