@@ -1,5 +1,6 @@
 from notebook.utils import url_path_join
 from notebook.base.handlers import IPythonHandler
+import notebook
 import json
 import os
 
@@ -10,11 +11,9 @@ class autopy_handler(IPythonHandler):
         data = json.loads(self.request.body)
 
         file_name = data.pop(0)
-        file_name = file_name[0: file_name.find('.ipynb')] + '.py'
-        if not os.path.isfile(file_name):
-            file_name = os.environ['HOME'] + file_name
-
+        file_name = os.getcwd() + file_name[0: file_name.find('.ipynb')] + '.py'
         print('Saved file path: ' + file_name)
+
         file = open(file_name, 'w')
         for line in data:
             file.write(line + '\n')
