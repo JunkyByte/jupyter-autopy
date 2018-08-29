@@ -28,6 +28,9 @@ define([
         }
 
         var change_state = function(cell, type){
+            if (cell.cell_type != 'code')
+                return;
+
             state = cell.metadata.autopy;
             if (state == null)
                 add_metadata(cell);
@@ -56,7 +59,8 @@ define([
         var restoreBackgrounds = function(){
             var cells = Jupyter.notebook.get_cells();
             for (var i=0; i < cells.length; i++){
-                set_bg(cells[i]);
+                if (cells[i].cell_type == 'code')
+                    set_bg(cells[i]);
             }
         }
 
@@ -77,7 +81,7 @@ define([
             var main = []; // to store main cells
 
             for (var i=0; i < cells.length; i++){
-                if (cells[i].metadata.autopy != null && cells[i].metadata.autopy != 0){
+                if (cells[i].metadata.autopy != null && cells[i].metadata.autopy != 0 && cells[i].cell_type == 'code'){
                     if (cells[i].metadata.autopy == 1)
                         def.push(cells[i].get_text());
                     else
@@ -86,7 +90,7 @@ define([
             }
 
             data = [def, main];
-            
+
             $.ajax({
                 type: "post",
                 url: "/autopy",
@@ -117,6 +121,15 @@ define([
             }
         }
 
+        var find_color = function(){
+            var cells = Jupyter.notebook.get_cells();
+            for (var i=0; i < cells.length; i++){
+                if (cells[i].cell_type == 'code')
+                    return Jupyter.notebook.get_cells()[i].input[0].childNodes[1].style.backgroundColor;
+            }
+            return '';
+        }
+
         var params = {
             highlightedColor : '',
             highlightedColorMain : ''
@@ -129,12 +142,15 @@ define([
             if (params.highlightedColorMain == '')
                 params.highlightedColorMain = 'rgba(228, 62, 62, 0.2)';
 
-            dColor = Jupyter.notebook.get_cells()[0].input[0].childNodes[1].style.backgroundColor;
+            dColor = find_color();
             restoreBackgrounds();
             copy_button();
 
-            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('t', mark_selected_default);
-            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('y', mark_selected_main);
+            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('k', {
+                                                                    help : 'autopy, tag cell',
+                                                                    help_index : 'autopy',
+                                                                    handler : mark_selected_default});
+            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('j', mark_selected_main);
         }
 
         var load_jupyter_extension = function() {
