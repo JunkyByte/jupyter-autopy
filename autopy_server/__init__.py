@@ -8,22 +8,23 @@ import os
 class autopy_handler(IPythonHandler):
     def post(self):
         print("[Autopy] POST received, saving")
-        data = json.loads(self.request.body)
+        data = json.loads(self.request.body)  # 2 Lists, data[0] is def, data[1] is main cells
 
         default = data[0]
         main = data[1]
 
-        file_name = default.pop(0)
-        file_name = os.getcwd() + file_name[0: file_name.find('.ipynb')] + '.py'
+        file_name = default.pop(0)  # Name of notebook is stored in data[0][0] (default[0])
+        file_name = os.getcwd() + file_name[0: file_name.find('.ipynb')] + '.py'  # This is an imperfect solution to abs path
         print('[Autopy] File path: ' + file_name)
 
-        file = open(file_name, 'w')
+        file = open(file_name, 'w')  # Create file and then write default cells and main cells
         for line in default:
             file.write(line + '\n\n')
 
-        file.write("if __name__ == '__main__':\n\n    ")
+        file.write("if __name__ == '__main__':\n    ")
         for line in main:
-            file.write(line + '\n    ')
+            line = line.replace('\n', '\n    ')  # Fix indentation on cells with multi lines
+            file.write(line + '\n    ')  # Fix indentation for next cell
 
         file.close()
         self.finish('Success')

@@ -8,6 +8,7 @@ define([
     Jupyter){
 
         var tag_name = 'autopy';
+        var dColor = '';
 
         var set_bg = function(cell){
             state = cell.metadata.autopy;
@@ -19,7 +20,7 @@ define([
             else if (state == 2)
                 cell.input[0].childNodes[1].style.backgroundColor = params.highlightedColorMain;
             else
-                cell.input[0].childNodes[1].style.backgroundColor = '';
+                cell.input[0].childNodes[1].style.backgroundColor = dColor;
         }
 
         var add_metadata = function(cell){
@@ -85,7 +86,7 @@ define([
             }
 
             data = [def, main];
-
+            
             $.ajax({
                 type: "post",
                 url: "/autopy",
@@ -128,6 +129,7 @@ define([
             if (params.highlightedColorMain == '')
                 params.highlightedColorMain = 'rgba(228, 62, 62, 0.2)';
 
+            dColor = Jupyter.notebook.get_cells()[0].input[0].childNodes[1].style.backgroundColor;
             restoreBackgrounds();
             copy_button();
 
