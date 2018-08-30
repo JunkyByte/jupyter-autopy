@@ -146,11 +146,38 @@ define([
             restoreBackgrounds();
             copy_button();
 
-            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('k', {
-                                                                    help : 'autopy, tag cell',
-                                                                    help_index : 'autopy',
-                                                                    handler : mark_selected_default});
-            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('j', mark_selected_main);
+            Jupyter.keyboard_manager.actions.register(
+                                        {
+                                        help : 'autopy: tag cell',
+                                        help_index : 'ap',
+                                        handler : function(event){
+                                            mark_selected_default();
+                                            return false;
+                                        }}, 'autopy-tag-cell', 'autopy');
+
+
+            Jupyter.keyboard_manager.actions.register(
+                                        {
+                                        help : 'autopy: tag cell as main',
+                                        help_index : 'ap',
+                                        handler : function(event){
+                                            mark_selected_main();
+                                            return false;
+                                        }}, 'autopy-tag-cell-main', 'autopy');
+
+            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('j', 'autopy:autopy-tag-cell');
+            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('k', 'autopy:autopy-tag-cell-main');
+
+            Jupyter.notebook.events.on('selected_cell_type_changed.Notebook', function(evt, obj) {
+                var cell = Jupyter.notebook.get_selected_cell();
+
+                if (obj.cell_type != 'code')
+                    add_metadata(cell);
+
+                //else // Should not be needed as there should never be code cells without bg
+                //    set_bg(cell);
+            });
+
         }
 
         var load_jupyter_extension = function() {
