@@ -1,13 +1,9 @@
 import os
 
-for i in range(10):
-    print(i)
+def f(a):
+    print(a)
 
 if __name__ == '__main__':
-    print(i)
-    def f():
-        print(0)
-    plt.imshow(awdjwdjakwb)
-    jekjfekej
-    dlkwldkla
+    a = 0
+    f(a)
     
