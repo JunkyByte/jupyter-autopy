@@ -1,6 +1,6 @@
 Type: Jupyter Notebook Extension
 Compatibility: 4.x, 5.x
-Name: autopy
+Name: jupyter-autopy
 Main: autopy.js
 #Icon: icon.png
 Link: README.md
