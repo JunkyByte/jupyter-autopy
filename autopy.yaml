@@ -9,6 +9,8 @@ Parameters:
 - name: autopy.highlightedColor
   description: Color for cells that will be copied to the .py file
   input_type: color
+  default: '#a3e4d7'
 - name: autopy.highlightedColorMain
   description: Color for the cells that will be copied as a main
   input_type: color
+  default: '#f5b7b1'
