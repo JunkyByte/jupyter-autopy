@@ -97,7 +97,7 @@ define([
                 contentType: 'application/json',
                 data: JSON.stringify(data),
                 success: function (response) {
-                    console.log('Reponse from autopy server: ' + response);
+                    console.log('[autopy] Reponse from server: ' + response);
                 }
             });
         }

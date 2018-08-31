@@ -27,11 +27,11 @@ class autopy_handler(IPythonHandler):
             file.write(line + '\n    ')  # Fix indentation for next cell
 
         file.close()
-        self.finish('Success')
+        self.finish('Success!')
 
 
 def load_jupyter_server_extension(nb_server_app):
     web_app = nb_server_app.web_app
     route_pattern = url_path_join(web_app.settings['base_url'], '/autopy')
     web_app.add_handlers('.*$', [(route_pattern, autopy_handler)])
-    print('[Autopy] Server extension has been loaded')
+    print('[autopy] Server extension has been loaded')
