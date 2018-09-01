@@ -35,3 +35,17 @@ def load_jupyter_server_extension(nb_server_app):
     route_pattern = url_path_join(web_app.settings['base_url'], '/autopy')
     web_app.add_handlers('.*$', [(route_pattern, autopy_handler)])
     print('[autopy] Server extension has been loaded')
+
+
+def _jupyter_server_extension_paths():
+    return [{
+        "module": "jupyter-autopy"
+    }]
+
+
+def _jupyter_nbextension_paths():
+    return [dict(
+        section="notebook",
+        src="static",
+        dest="jupyter-autopy",
+        require="jupyter-autopy/index")]

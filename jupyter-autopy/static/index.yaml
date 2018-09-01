@@ -1,7 +1,7 @@
 Type: Jupyter Notebook Extension
 Compatibility: 4.x, 5.x
 Name: jupyter-autopy
-Main: autopy.js
+Main: index.js
 #Icon: icon.png
 Link: README.md
 Description: FillMe

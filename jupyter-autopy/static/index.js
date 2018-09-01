@@ -91,16 +91,29 @@ define([
 
             data = [def, main];
 
-            $.ajax({
-                type: "post",
-                url: "/autopy",
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                success: function (response) {
-                    console.log('[autopy] Reponse from server: ' + response);
-                }
-            });
+            url = {type: "post",
+                   url: "/autopy",
+                   contentType: 'application/json',
+                   data: JSON.stringify(data),
+                   //headers : {'_xsrf': _add_auth_header()},
+                   success: function (response) {
+                     console.log('[autopy] Reponse from server: ' + response);
+                   }
+
+            }
+
+            $.ajax(url);
         }
+
+        var _get_cookie = function (name) {
+          var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+          return r ? r[1] : undefined;
+        }
+
+        var _add_auth_header = function () {
+            var xsrf_token = _get_cookie('_xsrf');
+            return xsrf_token;
+        };
 
         var copy_button = function () {
             if (!IPython.toolbar) {
@@ -165,8 +178,8 @@ define([
                                             return false;
                                         }}, 'autopy-tag-cell-main', 'autopy');
 
-            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('j', 'autopy:autopy-tag-cell');
-            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('k', 'autopy:autopy-tag-cell-main');
+            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('q', 'autopy:autopy-tag-cell');
+            Jupyter.keyboard_manager.command_shortcuts.add_shortcut('w', 'autopy:autopy-tag-cell-main');
 
             Jupyter.notebook.events.on('selected_cell_type_changed.Notebook', function(evt, obj) {
                 var cell = Jupyter.notebook.get_selected_cell();

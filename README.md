@@ -1,6 +1,6 @@
 # jupyter-autopy
 
-### Hey there! Let me introduce you jupyter-autopy </color> <br>
+### Hey there! <br>
 __jupyter-autopy__ is a __Jupyter Notebook__ extensions which
 allows you to automatically clone code cells from an open
 `.ipynb` to a `.py` standard python file. <br>
@@ -22,26 +22,37 @@ to how I do things.
 
 ## Installation
 
-Unfortunately `js` can't write on arbitrary paths as it would be
-a security threat, as I wanted to be able to create and modify
-`.py` files on the fly I had to migrate to a __front-end +
-back-end__ hybrid extension.
-This means that the Installation is a bit more complex.<br>
-
 #### Install Prerequisites <br>
 https://github.com/ipython-contrib/jupyter_contrib_nbextensions
 <br>
 https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator <br>
-(You may skip the first one if you are not interested in other extensions)
+The configurator allows you to modify the proprieties of the extension.
 
-#### Install front end
-```console
-cd ~
+#### Clone and install repo
+```
 git clone https://github.com/JunkyByte/jupyter-autopy.git
+pip install jupyter-autopy
+jupyter nbextension install --py jupyter-autopy --user
+jupyter nbextension enable jupyter-autopy --py --user
 ```
-Create symbolic link of the main folder to `~/.local/share/jupyter/nbextensions`
-```console
-ln -s ~/jupyter-autopy ~/.local/share/jupyter/nbextensions/jupyter-autopy
+
+You also have to disable xsrf auth otherwise post requests are refused (I didn't manage to add the auth token to the header, if anyone knows how to do it please open an issue)
+
+#### Disable xsrf auth
+
 ```
-Now the front-end extension is installed. <br>
-Let's install the backend.
+jupyter notebook --generate-config
+nano ~/.jupyter/jupyter_notebook_config.py
+```
+Look for __c.NotebookApp.disable_check_xsrf__ and set it to __True__
+```
+c.NotebookApp.disable_check_xsrf = True
+```
+
+
+
+And is done. You can also enable / disable and change colors from the __jupyer_nbextensions_configurator__ window.
+
+------------
+
+[Example notebook (Open it from local with extension installed)](example/example.ipynb)
