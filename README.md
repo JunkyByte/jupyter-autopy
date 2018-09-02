@@ -2,25 +2,20 @@
 
 ### Hey there! <br>
 __jupyter-autopy__ is a __Jupyter Notebook__ extensions which
-allows you to automatically clone code cells from an open
+allows you to automatically copy-paste code cells from an open
 `.ipynb` to a `.py` standard python file. <br>
 This is similar to `.py` export feature __Jupyter__ has by
 default but is more advanced as it allows you to mark the cells
-you want to be copied (it also features 2 types of marked cells: _default_ and _main_). <br>
-<br>
+you want to be copied (it also features 2 types of marked cells: _default_ and _main_). 
+<br><br>
+![Example Image](jupyter-autopy/static/icon.png)
+<br><br>
 I created this repo to make my standard workflow _smoother_,
 allowing me to use __Notebooks__ in a completely _prototyp-ish_
 style without having to worry about ordering / polishing up cells
-while being able of importing features from standard `.py` files.
+while being able of importing features working and always updated features from standard `.py` files.
 <br>
-
-This has also been an Exercise for me as I never write `js`,
-don't judge me, my workflow may not be ideal but it really adapts
-to how I do things.
-
 ------------
-
-![Example Image](jupyter-autopy/static/icon.png)
 
 ## Installation
 
