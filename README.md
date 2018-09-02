@@ -35,7 +35,7 @@ The configurator allows you to modify the proprieties of the extension.
 git clone https://github.com/JunkyByte/jupyter-autopy.git
 pip install jupyter-autopy
 jupyter nbextension install --py jupyter-autopy --user
-jupyter nbextension enable jupyter-autopy --py --user
+jupyter nbextension enable --py jupyter-autopy --user
 ```
 
 You also have to disable xsrf auth otherwise post requests are refused (I didn't manage to add the auth token to the header, if anyone knows how to do it please open an issue)
