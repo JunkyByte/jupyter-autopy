@@ -20,6 +20,8 @@ to how I do things.
 
 ------------
 
+![Example Image](jupyter-autopy/static/icon.png)
+
 ## Installation
 
 #### Install Prerequisites <br>
