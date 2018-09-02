@@ -2,7 +2,7 @@
 
 ### Hey there! <br>
 __jupyter-autopy__ is a __Jupyter Notebook__ extensions which
-allows you to automatically copy-paste code cells from an open
+allows you to simply copy-paste code cells from an open
 `.ipynb` to a `.py` standard python file. <br>
 This is similar to `.py` export feature __Jupyter__ has by
 default but is more advanced as it allows you to mark the cells
@@ -15,7 +15,6 @@ allowing me to use __Notebooks__ in a completely _prototyp-ish_
 style without having to worry about ordering / polishing up cells
 while being able of importing features working and always updated features from standard `.py` files.
 <br>
-------------
 
 ## Installation
 
