@@ -9,6 +9,7 @@ setuptools.setup(
         ("/share/jupyter/nbextensions/jupyter-autopy", [
             "jupyter-autopy/static/index.js",
             "jupyter-autopy/static/index.yaml",
+            "jupyter-autopy/static/icon.png",
             "jupyter-autopy/static/README.md",
         ]),
         ("etc/jupyter/nbconfig/notebook.d", [
