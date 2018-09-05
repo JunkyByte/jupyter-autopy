@@ -52,3 +52,10 @@ And is done. You can also enable / disable and change colors from the __jupyer_n
 ------------
 
 [Example notebook (Open it from local with extension installed)](example/example.ipynb)
+
+-----------
+
+## Future Updates
+
+- [ ] Add option to select file output path/name (instead of same name of notebook)
+- [ ] Add option to make the file clone on notebook save (instead of on button click)
