@@ -6,7 +6,7 @@ allows you to simply copy-paste code cells from an open
 `.ipynb` to a `.py` standard python file. <br>
 This is similar to `.py` export feature __Jupyter__ has by
 default but is more advanced as it allows you to mark the cells
-you want to be copied (it also features 2 types of marked cells: _default_ and _main_). 
+you want to be copied (it also features 2 types of marked cells: _default_ and _main_).
 <br><br>
 ![Example Image](jupyter-autopy/static/icon.png)
 <br><br>
@@ -59,3 +59,4 @@ And is done. You can also enable / disable and change colors from the __jupyer_n
 
 - [ ] Add option to select file output path/name (instead of same name of notebook)
 - [ ] Add option to make the file clone on notebook save (instead of on button click)
+- [ ] Automatic autopep8 on file save
