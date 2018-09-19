@@ -1,4 +1,4 @@
-import os
+import os, PIL
 
 def f(a):
     print(a)

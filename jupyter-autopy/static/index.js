@@ -95,7 +95,7 @@ define([
                    url: "/autopy",
                    contentType: 'application/json',
                    data: JSON.stringify(data),
-                   //headers : {'_xsrf': _add_auth_header()},
+                   headers : { 'X-XSRFToken' : _add_auth_header()},
                    success: function (response) {
                      console.log('[autopy] Reponse from server: ' + response);
                    }
