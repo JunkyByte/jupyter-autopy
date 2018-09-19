@@ -32,9 +32,9 @@ jupyter nbextension install --py jupyter-autopy --user
 jupyter nbextension enable --py jupyter-autopy --user
 ```
 
-~~ You also have to disable xsrf auth otherwise post requests are refused (I didn't manage to add the auth token to the header, if anyone knows how to do it please open an issue) ~~
+~~You also have to disable xsrf auth otherwise post requests are refused (I didn't manage to add the auth token to the header, if anyone knows how to do it please open an issue)~~
 
-Done. You can also enable / disable and change colors from the __jupyer_nbextensions_configurator__ window.
+You can also enable / disable and change colors from the __jupyer_nbextensions_configurator__ window.
 
 ------------
 
