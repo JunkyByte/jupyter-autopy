@@ -13,7 +13,7 @@ you want to be copied (it also features 2 types of marked cells: _default_ and _
 I created this repo to make my standard workflow _smoother_,
 allowing me to use __Notebooks__ in a completely _prototyp-ish_
 style without having to worry about ordering / polishing up cells
-while being able of importing features working and always updated features from standard `.py` files.
+while being able of importing features working and always updated from standard `.py` files.
 <br>
 
 ## Installation
